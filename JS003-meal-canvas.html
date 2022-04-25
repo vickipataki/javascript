@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript - Canvas Meal</title>
+	</head>
+	<body>
+		
+		<canvas id="canvas" width="400" height="400" style="background-color: rgb(184, 108, 20);">
+		</canvas>
+		
+		<script>
+			// 1. Find the canvas element:
+			var canvas = document.getElementById("canvas");
+			// 2. The getContext() method returns an object that provides methods and properties for drawing on the canvas:
+			var ctx = canvas.getContext("2d");
+			// 3. Main function:
+			drawMeal();
+			
+			//Draw:
+			function drawMeal() {
+				drawLargePlate();
+				drawBread();
+				drawSmallPlate();
+				drawSoup();
+				drawCarrots();
+			}
+			
+			// Large plate:
+			function drawLargePlate() {
+				ctx.beginPath();
+				ctx.arc(200, 200, 175, 0, 2 * Math.PI);
+				ctx.strokeStyle = "rgb(158, 146, 146)";
+				ctx.stroke();
+				ctx.fillStyle = "white";
+				ctx.fill();
+				ctx.beginPath();
+				ctx.arc(200, 200, 150, 0, 2 * Math.PI);
+				ctx.strokeStyle = "rgb(158, 146, 146)";
+				ctx.stroke();
+				ctx.fillStyle = "white";
+				ctx.fill();
+			}
+			
+			// Bread with butter:
+			function drawBread() {
+				ctx.beginPath();
+				ctx.fillStyle = "rgb(240, 213, 163)";
+				ctx.fillRect(40, 80, 110, 140);
+				ctx.beginPath();
+				ctx.fillStyle = "rgb(245, 241, 215)";
+				ctx.fillRect(50, 90, 90, 120);
+			}
+			
+			// Small plate:
+			function drawSmallPlate() {
+				ctx.beginPath();
+				ctx.arc(200, 200, 125, 0, 2 * Math.PI);
+				ctx.arc(200, 200, 120, 0, 2 * Math.PI);
+				ctx.fillStyle = "rgb(255, 255, 255)";
+				ctx.fill();
+				ctx.strokeStyle = "rgb(158, 146, 146)";
+				ctx.stroke();
+			}
+			
+			// Carrot soup:
+			function drawSoup() {
+				ctx.beginPath();
+				ctx.arc(200, 200, 105, 0, 2 * Math.PI);
+				ctx.fillStyle = "rgb(255, 123, 0)";
+				ctx.fill();
+			}
+			
+			// Carrots:
+			function drawCarrots() {
+				// First carrot:
+				ctx.beginPath();
+				ctx.arc(180, 200, 15, 0, 2 * Math.PI);
+				ctx.fillStyle = "rgb(232, 88, 16)";
+				ctx.fill();
+				ctx.strokeStyle = "rgb(255, 196, 0)";
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(180, 200, 10, 0, 2 * Math.PI);
+				ctx.fillStyle = "rgb(255, 196, 0)";
+				ctx.fill();
+				
+				// Second carrot:
+				ctx.beginPath();
+				ctx.arc(230, 170, 20, 0, 2 * Math.PI);
+				ctx.fillStyle = "rgb(232, 88, 16)";
+				ctx.fill();
+				ctx.strokeStyle = "rgb(255, 196, 0)";
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(230, 170, 15, 0, 2 * Math.PI);
+				ctx.fillStyle = "rgb(255, 196, 0)";
+				ctx.fill();
+				
+				// Third carrot:
+				ctx.beginPath();
+				ctx.arc(230, 230, 20, 0, Math.PI);
+				ctx.fillStyle = "rgb(232, 88, 16)";
+				ctx.fill();
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(230, 230, 10, 0, Math.PI);
+				ctx.fillStyle = "rgb(255, 196, 0)";
+				ctx.fill();
+			}
+
+		</script>
+	</body>
+</html>
