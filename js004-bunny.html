@@ -6,12 +6,21 @@
 	<body>
 		
 		<canvas id="canvas" width="400" height="400"></canvas>
-		<button onclick="drawColorfulBunny()">Change the bunny's color!</button>
+		<br/>
+		<br/>
+		<button onclick="drawRandomBunny()">Change the bunny's color to a random one!</button>
+		<br/>
+		<br/>
 		<button onclick="drawWhiteBunny()">Change the bunny's color back to albino!</button>
+		<br/>
+		<br/>
+		<label for="customcolor">Pick the bunny's color:</label>
+		<input type="color" id="customcolor" name="customcolor" value="#ff0000">
+		<button onclick="drawCustomBunny()">Go!</button>
+
 
 		<!-- Modify later to be movable! -->
 
-		
 		<script>
 			// 1. Find the canvas element:
 			var canvas = document.getElementById("canvas");
@@ -21,15 +30,21 @@
 			var bunnyColor, eyeColor;
 			drawWhiteBunny();
 			
-
 			function changeColor() {
 				bunnyColor =  "rgb(" + Math.round(Math.random() * 255) + ", " + Math.round(Math.random() * 255) + ", " + Math.round(Math.random() * 255) + ")";
 				return bunnyColor;
 			}
 				
-			function drawColorfulBunny() {
+			function drawRandomBunny() {
 				// Draw colorful bunny:
 				bunnyColor = changeColor();
+				eyeColor = "black";
+				drawBunny(bunnyColor, eyeColor);
+			}
+			
+			function drawCustomBunny() {
+				// Draw custom colored bunny:
+				bunnyColor = document.getElementById("customcolor").value;
 				eyeColor = "black";
 				drawBunny(bunnyColor, eyeColor);
 			}
@@ -40,7 +55,6 @@
 				eyeColor = "red";
 				drawBunny(bunnyColor, eyeColor);
 			}
-			
 			
 			function drawBunny(bunnyColor, eyeColor) {
 				drawBody();
@@ -148,6 +162,7 @@
 				ctx.fillStyle = bunnyColor;
 				ctx.fill();
 			}
+			
 		</script>
 	</body>
 </html>
