@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript - Canvas Rabbit</title>
+	</head>
+	<body>
+		
+		<canvas id="canvas" width="400" height="400"></canvas>
+		<button onclick="drawColorfulBunny()">Change the bunny's color!</button>
+		<button onclick="drawWhiteBunny()">Change the bunny's color back to albino!</button>
+
+		<!-- Modify later to be movable! -->
+
+		
+		<script>
+			// 1. Find the canvas element:
+			var canvas = document.getElementById("canvas");
+			// 2. The getContext() method returns an object that provides methods and properties for drawing on the canvas:
+			var ctx = canvas.getContext("2d");
+			canvas.style = "background-color: rgb(99, 186, 176)";
+			var bunnyColor, eyeColor;
+			drawWhiteBunny();
+			
+
+			function changeColor() {
+				bunnyColor =  "rgb(" + Math.round(Math.random() * 255) + ", " + Math.round(Math.random() * 255) + ", " + Math.round(Math.random() * 255) + ")";
+				return bunnyColor;
+			}
+				
+			function drawColorfulBunny() {
+				// Draw colorful bunny:
+				bunnyColor = changeColor();
+				eyeColor = "black";
+				drawBunny(bunnyColor, eyeColor);
+			}
+			
+			function drawWhiteBunny() {
+				// Draw White Bunny
+				bunnyColor = "white";
+				eyeColor = "red";
+				drawBunny(bunnyColor, eyeColor);
+			}
+			
+			
+			function drawBunny(bunnyColor, eyeColor) {
+				drawBody();
+				drawEar("160", bunnyColor, "70", "25", Math.PI / 3);
+				drawEar("240", bunnyColor, "70", "25", 2 * Math.PI / 3);
+				drawEar("160", "rgb(245, 164, 221)", "50", "15", Math.PI / 3);
+				drawEar("240", "rgb(245, 164, 221)", "50", "15", 2 * Math.PI / 3);
+				drawFace(bunnyColor);
+				drawEye("160", "18", eyeColor);
+				drawEye("240", "18", eyeColor);
+				drawNose();
+			}
+			
+			function drawEar(earX, bunnyColor, earLength, earWidth, earAngle) {
+			// Draw the ellipse (x, y, x-radius, y-radius, rotation in rad, start angle, end angle, clockwise - false or counter-clockwise - true)
+				ctx.beginPath();
+				ctx.ellipse(earX, 70, earLength, earWidth, earAngle, 0, 2 * Math.PI);
+				ctx.fillStyle = bunnyColor;
+				ctx.fill();
+			}
+			
+			function drawFace(bunnyColor) {
+				// Chin:
+				ctx.beginPath();
+				ctx.ellipse(200, 210, 30, 45, 0, 0, 2 * Math.PI);
+				ctx.fillStyle = "black";
+				ctx.fill();
+				
+				// Face:
+				ctx.fillStyle = bunnyColor;
+				ctx.beginPath();
+				ctx.ellipse(200, 170, 50, 75, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(200, 210, 60, 40, 0, 0, 2 * Math.PI);
+				ctx.fill();
+			}
+			
+			function drawEye(eyeX, eyeWidth, eyeColor) {
+				ctx.beginPath();
+				ctx.ellipse(eyeX, 170, 10, eyeWidth, 0, 0, 2 * Math.PI);
+				ctx.fillStyle = eyeColor;
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(eyeX, 160, 5, 6, 0, 0, 2 * Math.PI);
+				ctx.fillStyle = "white";
+				ctx.fill();				
+			}
+			
+			function drawNose() {
+				// Nose:
+			    ctx.beginPath();
+				ctx.moveTo(200, 220);
+				ctx.lineTo(220, 200);
+				ctx.lineTo(180, 200);
+				ctx.fillStyle = "rgb(245, 164, 221)";
+				ctx.fill();
+				
+				// Mouth:
+				ctx.beginPath();
+				ctx.moveTo(200, 220);
+				ctx.lineTo(220, 230);
+				ctx.lineTo(180, 230);
+				ctx.fillStyle = "rgb(245, 164, 221)";
+				ctx.fill();
+			}
+			
+			function drawBody() {
+				// Leg:
+				ctx.beginPath();
+				ctx.ellipse(200, 360, 120, 40, Math.PI, 0, Math.PI);
+				ctx.fillStyle = bunnyColor;
+				ctx.fill();
+				
+				ctx.beginPath();
+				ctx.ellipse(160, 300, 50, 30, Math.PI / 3, 0, 2 * Math.PI);
+				ctx.fill();
+				
+				ctx.beginPath();
+				ctx.ellipse(240, 300, 50, 30, 2 * Math.PI / 3, 0, 2 * Math.PI);
+				ctx.fill();
+				
+				// Body:
+				ctx.beginPath();
+				ctx.ellipse(200, 340, 60, 120, Math.PI, 0, Math.PI);
+				ctx.fillStyle = bunnyColor;
+				ctx.fill();
+				
+				// Arm:
+				ctx.beginPath();
+				ctx.ellipse(160, 305, 60, 20, Math.PI / 2, 0, 2 * Math.PI);
+				ctx.fillStyle = "black";
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(160, 300, 60, 20, Math.PI / 2, 0, 2 * Math.PI);
+				ctx.fillStyle = bunnyColor;
+				ctx.fill();
+				
+				ctx.beginPath();
+				ctx.ellipse(240, 305, 60, 20, Math.PI / 2, 0, 2 * Math.PI);
+				ctx.fillStyle = "black";
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(240, 300, 60, 20, Math.PI / 2, 0, 2 * Math.PI);
+				ctx.fillStyle = bunnyColor;
+				ctx.fill();
+			}
+		</script>
+	</body>
+</html>
