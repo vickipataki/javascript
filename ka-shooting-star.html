@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<canvas id="canvas" width="400" height="400" style="background-color: rgb(19, 32, 117)"></canvas>
+	
+		<script>
+			var xPos = 10;
+			var yPos = 10;
+			var bPos = 360;
+			
+			setInterval(draw, 50);
+			
+			function draw() {
+			
+				var ctx = document.getElementById("canvas").getContext("2d");
+				ctx.clearRect(0, 0, 400, 400);
+				ctx.save();
+				
+				// Star:
+				ctx.fillStyle = "rgb(255, 242, 0)";
+				ctx.beginPath();
+				ctx.ellipse(xPos, yPos, 5, 5, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				
+				// Land:
+				ctx.fillStyle = "rgb(0, 0, 0)";
+				ctx.beginPath();
+				ctx.rect(0, 300, 400, 100);
+				ctx.fill();
+				
+				// Tree:
+				ctx.beginPath();
+				ctx.rect(190, 220, 20, 80);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(200, 200, 30, 50, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(170, 230, 25, 20, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(230, 230, 25, 20, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(180, 200, 25, 25, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(230, 200, 25, 30, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				ctx.moveTo(200, 270);
+				ctx.lineTo(230, 240);
+				ctx.stroke();
+				ctx.lineWidth = 3;
+				ctx.moveTo(200, 280);
+				ctx.lineTo(170, 240);
+				ctx.stroke();
+				
+				// Bush:	
+				ctx.beginPath();
+				ctx.ellipse(100, 290, 20, 30, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(120, 290, 20, 20, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(80, 290, 20, 20, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				
+				
+				// Bush:
+				ctx.beginPath();
+				ctx.ellipse(300, 290, 20, 30, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(320, 290, 20, 20, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(280, 290, 20, 20, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				
+				// Balloon:
+				ctx.lineWidth = 1;
+				ctx.fillStyle = "rgb(0, 0, 0)";
+				ctx.beginPath();
+				ctx.rect(bPos - 5, 80, 10, 10);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.moveTo(bPos - 5, 80);
+				ctx.lineTo(bPos - 20, 50);
+				ctx.stroke();
+				ctx.moveTo(bPos + 5, 80);
+				ctx.lineTo(bPos + 20, 50);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(bPos, 40, 25, 25, 0, 0, 2 * Math.PI);
+				ctx.fill();
+				
+				ctx.restore();
+				
+				bPos -= 1;
+				xPos += 6;
+				yPos += 4;	
+			}
+		</script>
+	
+	</body>
+</html>
