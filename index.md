@@ -5,5 +5,7 @@
 		<a href="https://vickipataki.github.io/javascript/JS003-meal-canvas.html">Mealtime! (JS + Canvas)</a>
 		<br/>
 		<a href="https://vickipataki.github.io/javascript/js004-bunny.html">Colorful bunny! (JS + Canvas)</a>
+		<br/>
+		<a href="https://vickipataki.github.io/javascript/ka-shooting-star.html">Look, a shooting star! Make a wish, quickly! (JS + Canvas)</a>
 	</body>
 </html>
