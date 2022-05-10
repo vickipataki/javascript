@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Animal attack!</title>
+	</head>
+	<body>
+	
+		<canvas id="canvas" width="400" height="400" style="background-color: rgb(34, 88, 117);"></canvas>
+		
+		<script>
+			var x = 200;
+			var y = 200;
+			var otterSize = 20;
+			var mainColor = "rgb(102, 51, 15)";
+			var legColor = "rgb(79, 35, 3)";
+			var bellyColor = "rgb(237, 192, 121)";
+			var ctx = document.getElementById("canvas").getContext("2d");
+
+			setInterval(draw, 60);
+			
+			function draw() {
+				ctx.clearRect(0, 0, 400, 400);
+				ctx.save();
+				
+				// Otter's shadow:
+				drawEllipse(ctx, x, y, otterSize * 1.5, otterSize, "rgb(17, 58, 92)");
+				
+				// Water:
+				drawRect(ctx, 0, 0, 400, 50, "rgb(163, 217, 255)");
+				
+				// Otter's neck:
+				drawQuad(ctx, x - otterSize * 0.5, y - otterSize * 0.7, x + otterSize * 0.5, y - otterSize * 0.7, x + otterSize * 0.3, y - otterSize * 1.7, x - otterSize * 0.3, y - otterSize * 1.7, mainColor);
+				
+				// Otter's arms:
+				drawEllipse(ctx, x - otterSize * 0.35, y - otterSize * 0.8, otterSize * 0.35, otterSize * 0.3, legColor);
+				drawEllipse(ctx, x + otterSize * 0.35, y - otterSize * 0.8, otterSize * 0.35, otterSize * 0.3, legColor);
+				
+				// Otter's belly:
+				drawEllipse(ctx, x, y - otterSize * 0.25, otterSize * 0.8, otterSize * 0.7, mainColor);
+				drawEllipse(ctx, x, y - otterSize * 0.5, otterSize * 0.5, otterSize * 0.4, bellyColor);
+				
+				// Otter's left hand:
+				drawEllipse(ctx, x - otterSize * 0.3, y - otterSize * 0.9, otterSize * 0.1, otterSize * 0.1, legColor);
+				drawEllipse(ctx, x - otterSize * 0.2, y - otterSize * 0.9 , otterSize * 0.1, otterSize * 0.1, legColor);
+				drawEllipse(ctx, x - otterSize * 0.1, y - otterSize * 0.9 , otterSize * 0.1, otterSize * 0.1, legColor);
+				
+				// Otter's right hand:
+				drawEllipse(ctx, x + otterSize * 0.3, y - otterSize * 0.9, otterSize * 0.1, otterSize * 0.1, legColor);
+				drawEllipse(ctx, x + otterSize * 0.2, y - otterSize * 0.9 , otterSize * 0.1, otterSize * 0.1, legColor);
+				drawEllipse(ctx, x + otterSize * 0.1, y - otterSize * 0.9 , otterSize * 0.1, otterSize * 0.1, legColor);
+				
+				// Otter's tail:
+				drawEllipse(ctx, x, y + otterSize * 0.5 , otterSize * 0.3, otterSize * 0.2, legColor);
+				drawTriangle(ctx, x - otterSize * 0.26, y + otterSize * 0.6, x + otterSize * 0.26, y + otterSize * 0.6, x , y + otterSize * 0.9, legColor);
+				
+				// Otter's ears:
+				drawEllipse(ctx, x - otterSize * 0.25, y - otterSize * 1.65, otterSize * 0.07, otterSize * 0.08, mainColor);
+				drawEllipse(ctx, x + otterSize * 0.25, y - otterSize * 1.65, otterSize * 0.07, otterSize * 0.08, mainColor);
+				
+				// Otter's face:
+				drawEllipse(ctx, x, y - otterSize * 1.5, otterSize * 0.3, otterSize * 0.18, bellyColor);
+				drawEllipse(ctx, x - otterSize * 0.15 , y - otterSize * 1.35 , otterSize * 0.2, otterSize * 0.16,bellyColor);
+				drawEllipse(ctx, x + otterSize * 0.15 , y - otterSize * 1.35 , otterSize * 0.2, otterSize * 0.16,bellyColor);
+   
+				// Otter's nose:
+				drawEllipse(ctx, x, y - otterSize * 1.4, otterSize * 0.1, otterSize * 0.09, "rgb(0, 0, 0)");
+				drawTriangle(ctx, x - otterSize * 0.1, y - otterSize * 1.4, x + otterSize * 0.1, y - otterSize * 1.4, x, y - otterSize * 1.25, "rgb(0, 0, 0)");
+				drawTriangle(ctx, x - otterSize * 0.05, y - otterSize * 1.2 , x + otterSize * 0.05, y - otterSize * 1.2, x, y - otterSize * 1.25, "rgb(0, 0, 0)");
+				
+				// Otter's eyes:
+				drawArc(ctx, x - otterSize * 0.15, y - otterSize * 1.5, otterSize * 0.06, 0.75 * Math.PI, 2 * Math.PI, "rgb(0, 0, 0)");
+				drawArc(ctx, x + otterSize * 0.15, y - otterSize * 1.5, otterSize * 0.06, Math.PI, 2.25 * Math.PI, "rgb(0, 0, 0)");
+				
+				// Otter's legs:
+				drawEllipse(ctx, x - otterSize * 0.5, y + otterSize * 0.1, otterSize * 0.2, otterSize * 0.35, legColor);
+				drawEllipse(ctx, x - otterSize * 0.5 , y - otterSize * 0.2, otterSize * 0.1, otterSize * 0.1, legColor);
+				drawEllipse(ctx, x - otterSize * 0.6 , y - otterSize * 0.1 , otterSize * 0.1, otterSize * 0.15, legColor);
+				drawEllipse(ctx, x - otterSize * 0.4 , y - otterSize * 0.1 , otterSize * 0.1, otterSize * 0.1, legColor);
+				drawEllipse(ctx, x + otterSize * 0.5 , y + otterSize * 0.1 , otterSize * 0.2, otterSize * 0.35, legColor);
+				drawEllipse(ctx, x + otterSize * 0.5 , y - otterSize * 0.2, otterSize * 0.1, otterSize * 0.1, legColor);
+				drawEllipse(ctx, x + otterSize * 0.6 , y - otterSize * 0.1 , otterSize * 0.1, otterSize * 0.15, legColor);
+				drawEllipse(ctx, x + otterSize * 0.4 , y - otterSize * 0.1 , otterSize * 0.1, otterSize * 0.1, legColor);
+
+				ctx.restore();
+				
+				otterSize += 1;
+				y += 1;
+			}
+			
+			function drawEllipse(ctx, ellipseX, ellipseY, ellipseWidth, ellipseHeight, ellipseColor) {
+				ctx.fillStyle = ellipseColor;
+				ctx.beginPath();
+				ctx.ellipse(ellipseX, ellipseY, ellipseWidth, ellipseHeight, 0, 0, 2 * Math.PI);
+				ctx.fill();
+			}
+			
+			function drawRect(ctx, rectX, rectY, rectWidth, rectHeight, rectColor) {
+				ctx.fillStyle = rectColor;
+				ctx.beginPath();
+				ctx.rect(rectX, rectY, rectWidth, rectHeight);
+				ctx.fill();
+			}
+			
+			function drawTriangle(ctx, triX1, triY1, triX2, triY2, triX3, triY3, triColor) {
+				ctx.fillStyle = triColor;
+				ctx.beginPath();
+				ctx.moveTo(triX1, triY1);
+				ctx.lineTo(triX2, triY2);
+				ctx.lineTo(triX3, triY3);
+				ctx.fill();
+			}
+			
+			function drawQuad(ctx, quadX1, quadY1, quadX2, quadY2, quadX3, quadY3, quadX4, quadY4, quadColor){
+				ctx.fillStyle = quadColor;
+				ctx.beginPath();
+				ctx.moveTo(quadX1, quadY1);
+				ctx.lineTo(quadX2, quadY2);
+				ctx.lineTo(quadX3, quadY3);
+				ctx.lineTo(quadX4, quadY4);
+				ctx.fill();
+			}
+			
+			function drawArc (ctx, arcX, arcY, arcR, arcBegin, arcEnd, arcColor) {
+				ctx.fillStyle = arcColor;
+				ctx.beginPath();
+				ctx.arc(arcX, arcY, arcR, arcBegin, arcEnd);
+				ctx.fill();
+			}
+		</script>
+		
+	</body>
+</html>
