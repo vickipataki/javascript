@@ -11,6 +11,7 @@
 		<a href="https://vickipataki.github.io/javascript/peaceful-otter.html">How peaceful is this otter swimming on the water! (JS + Canvas)</a>
 		<br/>
 		<a href="https://vickipataki.github.io/javascript/say-my-name.html">What a colorful name you have! (JS + Canvas)</a>
+		<br/>
 		<a href="https://vickipataki.github.io/javascript/f-ton-of-cats.html">Cute and colorful cat monsters! (JS + Canvas)</a>
 	</body>
 </html>
