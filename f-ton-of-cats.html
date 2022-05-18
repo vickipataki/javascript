@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="400" height="400" style="background-color: rgb(89, 216, 255);"></canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			
+			canvas.addEventListener('click', (e) => {
+				const x = e.offsetX;
+				const y = e.offsetY;
+				drawCat(x, y, 20);
+			});
+		
+			function drawCat(x, y, catSize, catR, catG, catB) {
+				var ctx = canvas.getContext("2d");
+				var catR = getRandomInt(0, 256).toString();
+				var catG = getRandomInt(0, 256).toString();
+				var catB = getRandomInt(0, 256).toString();
+				var catColor = "rgb(" + catR + ", " + catG + ", " + catB + ")";
+				// Cat body:
+				drawQuad(ctx, x - catSize, y - catSize * 3, x + catSize, y - catSize * 3, x + catSize * 2, y + catSize, x - catSize * 2, y + catSize, catColor);
+				// Cat ears:
+				drawTriangle(ctx, x - catSize, y - catSize * 3, x - catSize, y - catSize * 3 - catSize * 0.7, x, y - catSize * 3, catColor);
+				drawTriangle(ctx, x + catSize, y - catSize * 3, x + catSize, y - catSize * 3 - catSize * 0.7, x, y - catSize * 3, catColor);
+				// Cat nose:
+				drawTriangle(ctx, x - catSize * 0.3, y - catSize * 2, x, y - catSize * 1.8, x + catSize * 0.3, y - catSize * 2, "rgb(255, 130, 255)");
+				// Cat mouth:
+				drawTriangle(ctx, x - catSize * 0.3, y - catSize * 1.6, x, y - catSize * 1.8, x + catSize * 0.3, y - catSize * 1.6, "rgb(0, 0, 0)");
+				// Cat eyes:
+				drawEllipse(ctx, x - catSize * 0.4, y - catSize * 2.3, catSize * 0.2, catSize * 0.2, "rgb(0, 0, 0)");
+				drawEllipse(ctx, x + catSize * 0.4, y - catSize * 2.3, catSize * 0.2, catSize * 0.2, "rgb(0, 0, 0)");
+			};
+
+			function getRandomInt(min, max) {
+				min = Math.ceil(min);
+				max = Math.floor(max);
+				return Math.floor(Math.random() * (max - min) + min);
+			}
+			
+			function drawEllipse(ctx, ellipseX, ellipseY, ellipseWidth, ellipseHeight, ellipseColor) {
+				ctx.fillStyle = ellipseColor;
+				ctx.beginPath();
+				ctx.ellipse(ellipseX, ellipseY, ellipseWidth, ellipseHeight, 0, 0, 2 * Math.PI);
+				ctx.fill();
+			}
+			
+			function drawTriangle(ctx, triX1, triY1, triX2, triY2, triX3, triY3, triColor) {
+				ctx.fillStyle = triColor;
+				ctx.beginPath();
+				ctx.moveTo(triX1, triY1);
+				ctx.lineTo(triX2, triY2);
+				ctx.lineTo(triX3, triY3);
+				ctx.fill();
+			}
+			
+			function drawQuad(ctx, quadX1, quadY1, quadX2, quadY2, quadX3, quadY3, quadX4, quadY4, catColor){
+				ctx.fillStyle = catColor;
+				ctx.beginPath();
+				ctx.moveTo(quadX1, quadY1);
+				ctx.lineTo(quadX2, quadY2);
+				ctx.lineTo(quadX3, quadY3);
+				ctx.lineTo(quadX4, quadY4);
+				ctx.fill();
+			}
+		</script>
+	</body>
+
+</html>
+
