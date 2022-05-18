@@ -4,13 +4,19 @@
 		<title>F*ton of cats!</title>
 	</head>
 	<body>
-		<p>Click on the canvas below multiple times and be overwhelmed by their cuteness!</p>
+		<p>Fill the canvas with a f*ton of cats by clicking on it!</p>
 		<canvas id="canvas" width="400" height="400" style="background-color: rgb(89, 216, 255);"></canvas>
 		<script>
 			var canvas = document.getElementById("canvas");
 			var ctx = canvas.getContext("2d");
 			
 			canvas.addEventListener('click', (e) => {
+				const x = e.offsetX;
+				const y = e.offsetY;
+				drawCat(x, y, 20);
+			});
+						
+			canvas.addEventListener('touchstart', (e) => {
 				const x = e.offsetX;
 				const y = e.offsetY;
 				drawCat(x, y, 20);
