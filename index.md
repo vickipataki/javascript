@@ -8,8 +8,7 @@
 		<br/>
 		<a href="https://vickipataki.github.io/javascript/ka-shooting-star.html">Look, a shooting star! Make a wish, quickly! (JS + Canvas)</a>
 		<br/>
-		<a href="https://vickipataki.github.io/javascript/peaceful-otter.html">How peaceful is this otter swimming on the water! (JS + Canvas) </a>
-		<a href="https://vickipataki.github.io/javascript/say-my-name.html">What a colorful name you have! (JS + Canvas) </a>
-
+		<a href="https://vickipataki.github.io/javascript/peaceful-otter.html">How peaceful is this otter swimming on the water! (JS + Canvas)</a>
+		<a href="https://vickipataki.github.io/javascript/say-my-name.html">What a colorful name you have! (JS + Canvas)</a>
 	</body>
 </html>
