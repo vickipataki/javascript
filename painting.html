@@ -38,13 +38,13 @@
 
 			canvas.addEventListener('touchstart', (e) => { 
 				isTouchDown = true;
-				const x = e.touches[0].clientX;
-				const y = e.touches[0].clientY;
-				draw(x, y);
 			});
 
 			canvas.addEventListener('touchend', (e) => { 
 				isTouchDown = false;
+				const x = e.touches[0].clientX;
+				const y = e.touches[0].clientY;
+				draw(x, y);
 			});
 			
 			canvas.addEventListener('touchmove', (e) => {
