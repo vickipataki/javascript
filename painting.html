@@ -44,10 +44,12 @@
 				isTouchDown = false;
 			});
 			
-			canvas.addEventListener("touchmove", (e) => {
-				  const x = e.offsetX;
-				  const y = e.offsetY;
+			canvas.addEventListener('touchmove', (e) => {
+				if (isTouchDown === true) {
+				  const x = e.touches[0].offsetX;
+				  const y = e.touches[0].offsetY;
 				  draw(x, y);
+				}
 			  }
 			);
 			
